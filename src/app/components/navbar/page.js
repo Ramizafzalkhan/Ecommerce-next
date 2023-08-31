@@ -5,12 +5,13 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Dialog } from '@headlessui/react'
 import Modal from "../modal/page";
-function Navlinks({isModalView=true}) {
+
+//navbar links//
+function Navlinks({ isModalView = true }) {
   const router = useRouter(); // Initialize the router object
   return (
     <div>
-      <ul  className={`flex flex-col p-4 md:p-0 mt-4 font-medium  rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-white ${
-          isModalView ? "flex-column" : "flex-row"
+      <ul className={`flex flex-col md:p-4 md:p-0 mt-10 md:mt-0  font-medium  rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-white ${isModalView ? "flex-column" : "flex-row"
         }`}>
         {navOptions.map((item) => (
           <li
@@ -23,12 +24,20 @@ function Navlinks({isModalView=true}) {
         ))}
       </ul>
     </div>
-    
+
   )
 }
+
+//navbar//
+
+
 export default function Navbar() {
   const isAdminView = false;
   const isAuthUser = false;
+  const router = useRouter(); // Initialize the router object
+
+  //show hide modal states
+
   const [show, setShow] = useState(false);
   let [isOpen, setIsOpen] = useState(false)
   const user = {
@@ -37,7 +46,7 @@ export default function Navbar() {
   }
   return (
     <div className="bg-white w-full p-6 border-b-2">
-      <div className="flex justify-between mx-auto max-w-screen-xl">
+      <div className="flex justify-between items-center mx-auto max-w-screen-xl">
         <div>
           <span className='text-2xl font-bold'>E Commerce</span>
         </div>
@@ -78,7 +87,7 @@ export default function Navbar() {
             </button>
           )}
           <button
-            className="md:hidden"
+            className="md:hidden ml-2"
             onClick={() => setShow(true)}
           >
             <svg
