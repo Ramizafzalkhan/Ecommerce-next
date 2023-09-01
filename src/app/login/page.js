@@ -2,8 +2,10 @@
 
 import { loginFormControls } from "@/utils";
 import InputFields from "../components/formElements/inputFields/page";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+    const router = useRouter(); // Initialize the router object
     return (
         <div>
             <div className="flex flex-col bg-white justify-center max-w-2xl py-7 mt-20 px-10 mx-auto shadow-2xl">
@@ -27,7 +29,7 @@ export default function Login() {
                     New to website ?
                 </p>
 
-                <button className="bg-gray-500 w-full p-5 rounded-sm text-white text-2xl">Register</button>
+                <button onClick={() => router.push("/register")} className="bg-gray-500 w-full p-5 rounded-sm text-white text-2xl">Register</button>
             </div>
 
 
